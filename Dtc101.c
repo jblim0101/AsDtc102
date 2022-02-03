@@ -1919,14 +1919,14 @@ void DispUnitToStr(unsigned char byUnit ,char *cUnit) //¹üÀ§ -999~999
 		strcpy(cUnit,"PSI");
 	}
 #else 
-	if (byUnit==UNIT_MPA) {
+	if (byUnit==UNIT_VOLT) {
 		strcpy(cUnit,"[V]");
-	} else if (byUnit==UNIT_KPA) {
+	} else if (byUnit==UNIT_mV) {
 		strcpy(cUnit," mV");
-	} else if (byUnit==UNIT_BAR) {
+	} else if (byUnit==UNIT_A) {
 		strcpy(cUnit,"[A]");
-	} else if (byUnit==UNIT_PSI) {
-		strcpy(cUnit,"Jul");
+	} else if (byUnit==UNIT_TMPC) {
+		strcpy(cUnit,"C");
 	}
 #endif
 }
@@ -2221,7 +2221,8 @@ void DispSetEditMain(byte byMenu, byte byEdit)
 	else byb[byMenu]=PUT_REVERSE;
 	
 	if( byMenu<1) {
-		//-----------1'st Page - Sensor Information ------------------
+		//-----------1'st Page - Sensor Information ------------------
+
 		e16printf(0,2,bya[0],(char *)"Sns:"); e16printf(32,2,byb[0],StSensor[StChannelBuf.bySensor].cName);
 		e16printf(64,2, PUT_NORMAL,(char *)"SBU:"); DispSetUnit( 104, 2, PUT_NORMAL, StSensor[StChannelBuf.bySensor].byUnit);
 		//----------Range of Senor as Sensor Unit 
